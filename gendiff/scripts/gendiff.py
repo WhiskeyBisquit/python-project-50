@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+from gendiff.generate_diff import generate_diff
 import argparse
 
 
@@ -14,8 +15,10 @@ def main():
     )
 
     args = parser.parse_args()
-
-    print(args)
+    file_path1 = vars(args)['first_file']
+    file_path2 = vars(args)['second_file']
+    diff = generate_diff(file_path1, file_path2)
+    print(diff)
 
 
 if __name__ == '__main__':
