@@ -12,7 +12,7 @@ def generate_diff(file_path1, file_path2):
         elif key in file_dict2 and file_dict1[key] != file_dict2[key]:
             result_str += f'  - {key}: {file_dict1[key]}\n'
             result_str += f'  + {key}: {file_dict2[key]}\n'
-        elif key not in file_dict2:
+        else:
             result_str += f'  - {key}: {file_dict1[key]}\n'
 
     for el in file_dict2:

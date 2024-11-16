@@ -10,10 +10,10 @@ test:
 test-coverage:
 	poetry run pytest --cov=gendiff --cov-report xml
 
-# check: selfcheck test lint
+check: selfcheck test lint
 
-# lint:
-# 	poetry run flake8 gendiff
+lint:
+	poetry run flake8 gendiff
 
-# build: check
-# 	poetry build
+build: check
+	poetry build
