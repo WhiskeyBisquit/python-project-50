@@ -1,10 +1,16 @@
 from gendiff.modules.parse import parse
 
 
+def get_keys(dict1, dict2):
+    keys = list(dict1.keys()) + list(
+        filter(lambda x: x not in dict1.keys(), dict2.keys()))
+    keys.sort()
+    return keys
+
+
 def generate_diff(file_path1, file_path2):
     file_dict1, file_dict2 = parse(file_path1, file_path2)
-    keys = list(set(file_dict1.keys()).union(set(file_dict2.keys())))
-    keys.sort()
+    keys = get_keys(file_dict1, file_dict2)
 
     result_str = '{\n'
 
