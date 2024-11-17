@@ -5,13 +5,11 @@ def get_keys(dict1, dict2):
     keys = list(dict1.keys()) + list(
         filter(lambda x: x not in dict1.keys(), dict2.keys()))
 
-    def bubble_sort(arr):
-        for n in range(len(arr) - 1, 0, -1):
-            for i in range(n):
-                if arr[i] > arr[i + 1]:
-                    arr[i], arr[i + 1] = arr[i + 1], arr[i]
+    for n in range(len(keys) - 1, 0, -1):
+        for i in range(n):
+            if keys[i] > keys[i + 1]:
+                keys[i], keys[i + 1] = keys[i + 1], keys[i]
 
-    bubble_sort(keys)
     return keys
 
 
