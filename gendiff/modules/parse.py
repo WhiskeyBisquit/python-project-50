@@ -1,7 +1,7 @@
-import json
+from gendiff.modules.get_dict_by_format import get_dict_by_format
 
 
-def change_bool(dict_):
+def change_bool_to_str(dict_):
     for el in dict_:
         if dict_[el] is True:
             dict_[el] = 'true'
@@ -11,7 +11,7 @@ def change_bool(dict_):
 
 
 def parse(file_path1, file_path2):
-    file_dict1 = json.load(open(file_path1))
-    file_dict2 = json.load(open(file_path2))
+    file_dict1 = get_dict_by_format(file_path1)
+    file_dict2 = get_dict_by_format(file_path2)
 
-    return change_bool(file_dict1), change_bool(file_dict2)
+    return change_bool_to_str(file_dict1), change_bool_to_str(file_dict2)
