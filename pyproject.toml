@@ -12,6 +12,9 @@ packages = [
 python = "^3.12"
 pyyaml = "^6.0.2"
 
+[tool.coverage.report]
+skip_empty = true
+
 [tool.poetry.scripts]
 gendiff = "gendiff.scripts.gendiff:main"
 
