@@ -1,4 +1,4 @@
-from modules.get_keys import get_keys
+from gendiff.modules.get_keys import get_keys
 
 
 def get_diff(d1: dict, d2: dict):
