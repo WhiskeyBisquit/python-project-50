@@ -10,6 +10,9 @@ test:
 test-coverage:
 	uv run pytest --cov=gendiff --cov-report xml
 
+coverage:
+	uv run pytest --cov=gendiff
+
 lint:
 	uv run ruff check
 
