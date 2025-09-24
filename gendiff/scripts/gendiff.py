@@ -2,7 +2,7 @@
 import argparse
 
 
-def main():
+def main(arg_list=None):
     parser = argparse.ArgumentParser(
         description="Compares two configuration files and shows a difference."
     )
@@ -13,7 +13,7 @@ def main():
         "-f", "--fomat", dest='FORMAT', type=str, help='set format of output'
         )
 
-    args = parser.parse_args()
+    args = parser.parse_args(arg_list)
 
     print(args)
 
