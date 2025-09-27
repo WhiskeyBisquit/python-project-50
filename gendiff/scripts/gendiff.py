@@ -1,9 +1,7 @@
 #!/usr/bin/env python3
 import argparse
 
-from gendiff.formatters.stylish import get_stylish
 from gendiff.generate_diff import generate_diff
-from gendiff.modules.parse import parse
 
 
 def main(arg_list=None):
@@ -19,12 +17,13 @@ def main(arg_list=None):
 
     args = parser.parse_args(arg_list)
 
-    dict1 = parse(vars(args)['first_file'])
-    dict2 = parse(vars(args)['second_file'])
+    file_path1 = vars(args)['first_file']
+    file_path2 = vars(args)['second_file']
+    formatter = vars(args)['FORMAT'] or 'stylish'
 
-    diff = generate_diff(dict1, dict2)
+    diff = generate_diff(file_path1, file_path2, formatter)
 
-    print(get_stylish(diff))
+    print(diff)
 
 
 if __name__ == '__main__':
