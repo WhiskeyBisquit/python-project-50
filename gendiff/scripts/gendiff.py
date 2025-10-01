@@ -12,7 +12,7 @@ def main(arg_list=None):
     parser.add_argument("first_file")
     parser.add_argument("second_file")
     parser.add_argument(
-        "-f", "--fomat", dest='FORMAT', type=str, help='set format of output'
+        "-f", "--format", dest='FORMAT', type=str, help='set format of output'
         )
 
     args = parser.parse_args(arg_list)
