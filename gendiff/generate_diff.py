@@ -1,3 +1,4 @@
+from gendiff.formatters.json import get_complex_diff, get_json_diff
 from gendiff.formatters.plain import get_plain
 from gendiff.formatters.stylish import get_stylish
 from gendiff.modules.get_keys import get_keys
@@ -45,9 +46,12 @@ def generate_diff(file_path1: str, file_path2: str, formatter='stylish'):
 
     if formatter == 'plain':
         return get_plain(dict1, dict2)
-    elif formatter not in ['plain', 'stylish']:
+    elif formatter == 'json':
+        diff = get_complex_diff(dict1, dict2)
+        return get_json_diff(diff)
+    elif formatter not in ['plain', 'stylish', 'json']:
         return f"""gendiff doesn\'t support '{formatter}' formatter. 
-Please try 'stylish' or 'plain'"""
+Please try 'stylish' / 'plain' / 'json'"""
     else:
         diff = get_nested_diff(dict1, dict2)
         return get_stylish(diff)
