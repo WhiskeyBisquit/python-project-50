@@ -15,7 +15,6 @@ def get_dict_by_format(path):
         raise ValueError(f"Unsupported format: {format_}")
 
 
-
 def change_bool_null_to_str(dict_):
     for el in dict_:
         if dict_[el] is True:
