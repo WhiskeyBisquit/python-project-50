@@ -10,6 +10,9 @@ file2_yaml = 'tests/test_data/file2.yaml'
 file3_yaml = 'tests/test_data/file3.yaml'
 file4_yaml = 'tests/test_data/file4.yaml'
 
+# yml
+file1_yml = 'tests/test_data/file1.yml'
+file2_yml = 'tests/test_data/file2.yml'
 
 #  test data for generate_diff function
 expected_2 = """{
@@ -199,6 +202,7 @@ Please try 'stylish' / 'plain' / 'json'"""
 test_generate_diff_variants = [
     (file1_json, file2_json, 'stylish', expected_2),
     (file1_yaml, file2_yaml, 'stylish', expected_2),
+    (file1_yml, file2_yml, 'stylish', expected_2),
     (file1_json, file2_yaml, 'stylish', expected_2),
     (file1_yaml, file2_json, 'stylish', expected_2),
     (file3_json, file4_json, 'stylish', expected_3),
@@ -207,6 +211,7 @@ test_generate_diff_variants = [
     (file3_yaml, file4_json, 'stylish', expected_3),
     (file1_json, file2_json, 'plain', expected_4),
     (file1_yaml, file2_yaml, 'plain', expected_4),
+    (file1_yml, file2_yml, 'plain', expected_4),
     (file1_json, file2_yaml, 'plain', expected_4),
     (file1_yaml, file2_json, 'plain', expected_4),
     (file3_json, file4_json, 'plain', expected_5),
@@ -215,6 +220,7 @@ test_generate_diff_variants = [
     (file3_yaml, file4_json, 'plain', expected_5),
     (file1_json, file2_json, 'json', expected_6),
     (file1_yaml, file2_yaml, 'json', expected_6),
+    (file1_yml, file2_yml, 'json', expected_6),
     (file1_json, file2_yaml, 'json', expected_6),
     (file1_yaml, file2_json, 'json', expected_6),
     (file3_json, file4_json, 'json', expected_7),

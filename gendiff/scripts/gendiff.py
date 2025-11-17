@@ -22,7 +22,8 @@ def main(arg_list=None):
     formatter = vars(args)['FORMAT'] or 'stylish'
 
     diff = generate_diff(file_path1, file_path2, formatter)
-
+    print(type(generate_diff))
+    print(type(diff))
     print(diff)
 
 
