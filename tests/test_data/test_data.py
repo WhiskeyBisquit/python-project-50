@@ -82,8 +82,118 @@ Property 'group1.baz' was updated. From 'bas' to 'bars'
 Property 'group1.nest' was updated. From [complex value] to 'str'
 Property 'group2' was removed
 Property 'group3' was added with value: [complex value]"""
+expected_6 = """{
+    "follow": {
+        "status": "removed",
+        "value": false
+    },
+    "host": {
+        "status": "unchanged",
+        "value": "hexlet.io"
+    },
+    "proxy": {
+        "status": "removed",
+        "value": "123.234.53.22"
+    },
+    "timeout": {
+        "status": "updated",
+        "value": 20,
+        "old_value": 50
+    },
+    "verbose": {
+        "status": "added",
+        "value": true
+    }
+}"""
 
-expected_6 = """gendiff doesn't support 'some_formatter' formatter. 
+expected_7 = """{
+    "common": {
+        "follow": {
+            "status": "added",
+            "value": false
+        },
+        "setting1": {
+            "status": "unchanged",
+            "value": "Value 1"
+        },
+        "setting2": {
+            "status": "removed",
+            "value": 200
+        },
+        "setting3": {
+            "status": "updated",
+            "value": null,
+            "old_value": true
+        },
+        "setting4": {
+            "status": "added",
+            "value": "blah blah"
+        },
+        "setting5": {
+            "status": "added",
+            "value": {
+                "key5": "value5"
+            }
+        },
+        "setting6": {
+            "doge": {
+                "wow": {
+                    "status": "updated",
+                    "value": "so much",
+                    "old_value": ""
+                }
+            },
+            "key": {
+                "status": "unchanged",
+                "value": "value"
+            },
+            "ops": {
+                "status": "added",
+                "value": "vops"
+            }
+        }
+    },
+    "group1": {
+        "baz": {
+            "status": "updated",
+            "value": "bars",
+            "old_value": "bas"
+        },
+        "foo": {
+            "status": "unchanged",
+            "value": "bar"
+        },
+        "nest": {
+            "status": "updated",
+            "value": "str",
+            "old_value": {
+                "key": "value"
+            }
+        }
+    },
+    "group2": {
+        "status": "removed",
+        "value": {
+            "abc": 12345,
+            "deep": {
+                "id": 45
+            }
+        }
+    },
+    "group3": {
+        "status": "added",
+        "value": {
+            "deep": {
+                "id": {
+                    "number": 45
+                }
+            },
+            "fee": 100500
+        }
+    }
+}"""
+
+expected_8 = """gendiff doesn't support 'some_formatter' formatter. 
 Please try 'stylish' / 'plain' / 'json'"""
 
 test_generate_diff_variants = [
@@ -103,5 +213,13 @@ test_generate_diff_variants = [
     (file3_yaml, file4_yaml, 'plain', expected_5),
     (file3_json, file4_yaml, 'plain', expected_5),
     (file3_yaml, file4_json, 'plain', expected_5),
-    (file1_json, file2_json, 'some_formatter', expected_6)
+    (file1_json, file2_json, 'json', expected_6),
+    (file1_yaml, file2_yaml, 'json', expected_6),
+    (file1_json, file2_yaml, 'json', expected_6),
+    (file1_yaml, file2_json, 'json', expected_6),
+    (file3_json, file4_json, 'json', expected_7),
+    (file3_yaml, file4_yaml, 'json', expected_7),
+    (file3_json, file4_yaml, 'json', expected_7),
+    (file3_yaml, file4_json, 'json', expected_7),
+    (file1_json, file2_json, 'some_formatter', expected_8)
 ]
