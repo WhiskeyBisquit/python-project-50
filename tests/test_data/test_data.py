@@ -84,7 +84,7 @@ Property 'group2' was removed
 Property 'group3' was added with value: [complex value]"""
 
 expected_6 = """gendiff doesn't support 'some_formatter' formatter. 
-Please try 'stylish' or 'plain'"""
+Please try 'stylish' / 'plain' / 'json'"""
 
 test_generate_diff_variants = [
     (file1_json, file2_json, 'stylish', expected_2),
