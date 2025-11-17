@@ -8,9 +8,12 @@ def get_dict_by_format(path):
 
     if format_ == 'json':
         return load(open(path))
-    else:
+    elif format_ in ['yaml', 'yml']:
         with (open(path, 'r')) as file:
             return yaml.safe_load(file)
+    else:
+        raise ValueError(f"Unsupported format: {format_}")
+
 
 
 def change_bool_null_to_str(dict_):
