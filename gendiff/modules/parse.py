@@ -21,7 +21,7 @@ def change_bool_null_to_str(dict_):
             dict_[el] = 'true'
         elif dict_[el] is False:
             dict_[el] = 'false'
-        elif not dict_[el] and dict_[el] != '':
+        elif not dict_[el] and dict_[el] != '' and dict_[el] != 0:
             dict_[el] = 'null'
 
         if isinstance(dict_[el], dict):
