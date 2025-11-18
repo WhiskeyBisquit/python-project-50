@@ -17,7 +17,8 @@ def get_plain(d1: dict, d2: dict):  # noqa: C901
     def walk(d1, d2):  # noqa: C901
         nonlocal result
         nonlocal cur_key
-        all_keys = get_keys(d1, d2)
+        if isinstance(d1, dict) and isinstance(d2, dict):
+            all_keys = get_keys(d1, d2)
 
         for key in all_keys:
             cur_key.append(key)
