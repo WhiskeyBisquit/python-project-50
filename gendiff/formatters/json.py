@@ -5,8 +5,9 @@ from gendiff.modules.get_keys import get_keys
 
 def get_plain_diff(d1, d2):
     result = {}
-    if isinstance(d1, str) or isinstance(d2, str):
-        return
+    if not isinstance(d1, dict) or not isinstance(d2, dict):
+        raise TypeError("Both arguments must be dictionaries.")
+
     all_keys = get_keys(d1, d2)
     for key in all_keys:
         if key in d1 and key in d2:
