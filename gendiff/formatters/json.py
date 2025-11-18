@@ -17,6 +17,11 @@ def get_plain_diff(d1, d2):
                 result[key]['status'] = 'updated'
                 result[key]['value'] = d2[key]
                 result[key]['old_value'] = d1[key]
+            elif isinstance(d1[key], str) or isinstance(d2[key], str):
+                result[key] = {}
+                result[key]['status'] = 'updated'
+                result[key]['value'] = d2[key]
+                result[key]['old_value'] = d1[key]
         if key not in d2:
             result[key] = {}
             result[key]['status'] = 'removed'
