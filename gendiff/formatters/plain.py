@@ -19,6 +19,8 @@ def get_plain(d1: dict, d2: dict):  # noqa: C901
         nonlocal cur_key
         if isinstance(d1, dict) and isinstance(d2, dict):
             all_keys = get_keys(d1, d2)
+        else:
+            return
 
         for key in all_keys:
             cur_key.append(key)
