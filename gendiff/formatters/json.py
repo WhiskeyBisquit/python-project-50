@@ -5,6 +5,8 @@ from gendiff.modules.get_keys import get_keys
 
 def get_plain_diff(d1, d2):
     result = {}
+    if isinstance(d1, str) or isinstance(d2, str):
+        return
     all_keys = get_keys(d1, d2)
     for key in all_keys:
         if key in d1 and key in d2:
@@ -17,11 +19,11 @@ def get_plain_diff(d1, d2):
                 result[key]['status'] = 'updated'
                 result[key]['value'] = d2[key]
                 result[key]['old_value'] = d1[key]
-            elif isinstance(d1[key], str) or isinstance(d2[key], str):
+            elif isinstance(d1, str) or isinstance(d2, str):
                 result[key] = {}
                 result[key]['status'] = 'updated'
-                result[key]['value'] = d2[key]
-                result[key]['old_value'] = d1[key]
+                result[key]['value'] = d2
+                result[key]['old_value'] = d1
         if key not in d2:
             result[key] = {}
             result[key]['status'] = 'removed'
