@@ -37,7 +37,7 @@ def get_complex_diff(d1, d2):
         if not isinstance(d2.get(key, ''), dict):
             result.update(get_plain_diff(d1, d2))
         elif key in d1 and key in d2:
-            result[key] = get_complex_diff(d1[key], d2[key])
+            result[key] = get_complex_diff(d1.get(key, {}), d2[key])
 
     return result
 
@@ -47,11 +47,12 @@ def get_json_diff(diff):
         if isinstance(v, dict):
             get_json_diff(v)
         else:
-            if diff[k] == 'false':
-                diff[k] = False
-            elif diff[k] == 'true':
-                diff[k] = True
-            elif diff[k] == 'null':
-                diff[k] = None
+            if isinstance(v, str):
+                if v == 'false':
+                    diff[k] = False
+                elif v == 'true':
+                    diff[k] = True
+                elif v == 'null':
+                    diff[k] = None
     
     return dumps(diff, indent=4)
