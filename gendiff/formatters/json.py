@@ -41,6 +41,8 @@ def get_plain_diff(d1, d2):
 
 def get_complex_diff(d1, d2):
     result = {}
+    print(f"d1_complex: {d1}")
+    print(f"d2_complex: {d2}")
     all_keys = get_keys(d1, d2)
 
     for key in all_keys:
