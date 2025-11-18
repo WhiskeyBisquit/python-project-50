@@ -29,6 +29,8 @@ def get_diff(d1: dict, d2: dict):
 
 def get_nested_diff(d1: dict, d2: dict):
     result = {}
+    if not isinstance(d1, dict) or not isinstance(d2, dict):
+        return result
     all_keys = get_keys(d1, d2)
 
     for key in all_keys:
